@@ -3,21 +3,66 @@
 <head>
     <meta charset="utf-8">
     <title>Primeira Página</title>
+    <style>
+        body {
+            background-color: #f5f0b0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #006400;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+        }
+        h1 {
+            margin: 0;
+        }
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+        a:hover {
+            color: red;
+            text-decoration: underline;
+        }
+        ul {
+            list-style-type: square;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        img {
+            display: block;
+            margin: 1.5rem auto;
+            border: 2px solid #666;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
 
 <header>
-    <h1>Primeira Página Web!</h1>
+    <h1>O meu primeiro site</h1>
 </header>
 
 <main>
     <p>Eis a minha primeira página Web!</p>
     <p>
         Na Unidade Curricular de
-        <a href="https://moodle.ensinolusofona.pt/course/view.php?id=11232">
+        <a href="https://moodle.ensinolusofona.pt/course/view.php?id=11232" target="_blank">
             Desenvolvimento de Interfaces Web
         </a>
-        abordaremos as seguintes tecnologias Web &#127760;:
+        abordaremos as seguintes tecnologias Web 🌐:
     </p>
     <ul>
         <li>HTML</li>
@@ -26,7 +71,14 @@
         <li>React e Next.js</li>
     </ul>
     <p>Iremos criar soluções criativas!</p>
-    <img src="images/diw.svg" alt="Desenvolvimento de Interfaces Web">
+
+    <ul>
+        <li><a href="lab1/index.html">Lab1</a></li>
+        <li><a href="lab2/index.html">Lab2</a></li>
+        <li><a href="lab2/exercicios.html">Exercícios lab 2</a></li>
+    </ul>
+
+    <img src="lab1/images/diw.svg" alt="Desenvolvimento de Interfaces Web" style="width:300px;">
 </main>
 
 <footer>
