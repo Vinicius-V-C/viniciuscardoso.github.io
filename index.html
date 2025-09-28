@@ -1,90 +1,142 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="utf-8">
-    <title>Primeira Página</title>
-    <style>
-        body {
-            background-color: #f5f0b0;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        header {
-            background-color: #006400;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-        main {
-            padding: 2rem;
-        }
-        h1 {
-            margin: 0;
-        }
-        a {
-            color: blue;
-            text-decoration: none;
-        }
-        a:hover {
-            color: red;
-            text-decoration: underline;
-        }
-        ul {
-            list-style-type: square;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
-        }
-        img {
-            display: block;
-            margin: 1.5rem auto;
-            border: 2px solid #666;
-            border-radius: 8px;
-        }
-    </style>
+  <meta charset="utf-8">
+  <title>Vinícius Cardoso • Engenharia Informática</title>
+  <style>
+    /* Reset básico */
+    body, h1, h2, p, ul { margin:0; padding:0; }
+    body { font-family: Arial, sans-serif; }
+
+    /* Seções ocupam a viewport toda */
+    section { min-height:100vh; display:flex; align-items:center; justify-content:center; }
+
+    /* HERO ================================================= */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, #004d7a, #008793, #00bf72, #a8eb12);
+      color: white;
+      text-align: center;
+      flex-direction: column;
+      padding: 2rem;
+    }
+    .hero nav {
+      position: absolute;
+      top: 20px; left: 0; right: 0;
+      display: flex;
+      justify-content: center;
+    }
+    .hero nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      background: rgba(0,0,0,0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+    }
+    .hero nav a {
+      color: white; text-decoration: none; font-weight: bold;
+    }
+    .hero nav a:hover { text-decoration: underline; }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .hero p { font-size: 1.2rem; margin-bottom: 1.5rem; }
+    .btn {
+      display: inline-block;
+      background: #ffd54f;
+      color: #111;
+      padding: 0.75rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform .2s;
+    }
+    .btn:hover { transform: translateY(-3px); }
+
+    /* PROJETOS ============================================ */
+    .projetos {
+      background: #fff3e0;
+      text-align: center;
+      flex-direction: column;
+      padding: 2rem;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+    }
+    .card {
+      background: #ffe0b2;
+      border-radius: 10px;
+      padding: 1rem;
+      width: 200px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform .2s;
+      text-decoration: none;
+      color: #111;
+    }
+    .card:hover { transform: translateY(-4px); }
+
+    /* DISCIPLINA =========================================== */
+    .cadeira {
+      background: #e8f5e9;
+      padding: 2rem;
+      text-align: center;
+      flex-direction: column;
+    }
+    .cadeira h2 { margin-bottom: 1rem; }
+
+    /* FOOTER ============================================== */
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>O meu primeiro site</h1>
-</header>
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <nav>
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#cadeira">Disciplina</a></li>
+      </ul>
+    </nav>
+    <h1>Vinícius Cardoso</h1>
+    <p>Estudante de Engenharia Informática 🚀</p>
+    <a href="#projetos" class="btn">Ver projetos</a>
+  </section>
 
-<main>
-    <p>Eis a minha primeira página Web!</p>
-    <p>
-        Na Unidade Curricular de
-        <a href="https://moodle.ensinolusofona.pt/course/view.php?id=11232" target="_blank">
-            Desenvolvimento de Interfaces Web
-        </a>
-        abordaremos as seguintes tecnologias Web 🌐:
-    </p>
+  <!-- PROJETOS -->
+  <section id="projetos" class="projetos">
+    <h2>Meus Projetos</h2>
+    <p>Exercícios desenvolvidos na UC.</p>
+    <div class="cards">
+      <a class="card" href="lab1/index.html"><h3>Lab 1</h3><p>Estrutura base</p></a>
+      <a class="card" href="lab2/index.html"><h3>Lab 2</h3><p>Layout responsivo</p></a>
+      <a class="card" href="lab2/exercicios.html"><h3>Exercícios</h3><p>Prática guiada</p></a>
+      <a class="card" href="lab3/index.html"><h3>Lab 3</h3><p>Interatividade</p></a>
+    </div>
+  </section>
+
+  <!-- DISCIPLINA -->
+  <section id="cadeira" class="cadeira">
+    <h2>Interfaces Web</h2>
+    <p>Nesta disciplina estudamos HTML, CSS, JavaScript e boas práticas de Web Design.</p>
     <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>React e Next.js</li>
+      <li>HTML semântico</li>
+      <li>CSS moderno (flex, grid, media queries)</li>
+      <li>JavaScript para interatividade</li>
     </ul>
-    <p>Iremos criar soluções criativas!</p>
+  </section>
 
-    <ul>
-        <li><a href="lab1/index.html">Lab1</a></li>
-        <li><a href="lab2/index.html">Lab2</a></li>
-        <li><a href="lab2/exercicios.html">Exercícios lab 2</a></li>
-        <li><a href="lab3/index.html">Lab3</a></li>
-    </ul>
-
-    <img src="lab1/images/diw.svg" alt="Desenvolvimento de Interfaces Web" style="width:300px;">
-</main>
-
-<footer>
+  <footer>
     <p>Universidade Lusófona © 2025</p>
-</footer>
-
+  </footer>
 </body>
 </html>
