@@ -1,4 +1,4 @@
-/* Base */
+/* ===== Base ===== */
 * { box-sizing: border-box; }
 :root{
   --verde:#2e7d32;
@@ -12,25 +12,44 @@ body{
   margin:0;
   font-family: Arial, Helvetica, sans-serif;
   line-height:1.6;
-  background-color: var(--cinza); /* Passo 4 */
+  background-color: var(--cinza);
   color:#222;
 }
 
-/* Cabeçalho e navegação */
+/* ===== Cabeçalho e navegação ===== */
 header{
-  background: var(--verde);       /* Passo 5 (elemento verde) */
-  color: var(--branco);
-  text-align: center;
-  padding: 16px 0;                /* espaçamento interno */
+  background: transparent;
+  padding: 0;
 }
 header h1{ margin:0; }
 
+/* Topbar */
+.topbar{
+  background: var(--verde);
+  color: var(--branco);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  padding:12px 16px;
+}
+.topbar h1{ margin:0; }
+
+/* Imagem obrigatória no topo */
+header img.hero{
+  width:100%;
+  max-height:260px;
+  object-fit:cover;
+  display:block;
+}
+
+/* Nav padrão */
 nav{
-  background: var(--preto);       /* Passo 5 (elemento preto) */
+  background: var(--preto);
   display:flex;
   gap:12px;
   justify-content:center;
-  padding:10px 12px;              /* padding no nav */
+  padding:10px 12px;
 }
 nav a{
   color:#fff;
@@ -39,35 +58,31 @@ nav a{
   border-radius:6px;
 }
 nav a:hover{ background: rgba(255,255,255,.15); }
-
-/* Imagem obrigatória no topo de cada página */
-header img.hero{
-  width:100%;
-  max-height:260px;
-  object-fit:cover;
-  display:block;
+nav a[aria-current="page"]{
+  background: rgba(255,255,255,.22);
+  font-weight:700;
 }
 
-/* Conteúdo principal */
+/* ===== Conteúdo principal ===== */
 main{
   max-width:1100px;
-  margin:24px auto;               /* margem externa (afasta do nav e do footer) */
+  margin:24px auto;
   background:#fff;
-  padding:18px 22px;              /* padding interno (respiro do conteúdo) */
+  padding:18px 22px;
   border-radius:10px;
   box-shadow:0 6px 20px rgba(0,0,0,.08);
 }
 
-/* Rodapé */
+/* ===== Rodapé ===== */
 footer{
   background: var(--preto);
   color:#fff;
   text-align:center;
   padding:12px 0;
-  margin-top:24px;                /* separa do main */
+  margin-top:24px;
 }
 
-/* Multimédia – grelha de fotos */
+/* ===== Multimédia – grelha de fotos ===== */
 .fotografias{
   display:flex; flex-wrap:wrap;
   gap:15px; justify-content:center;
@@ -76,12 +91,22 @@ footer{
   width:300px; height:auto;
   border-radius:15px;
   box-shadow:0 4px 10px rgba(0,0,0,.30);
-  transition: transform .3s ease;
+  transition: transform .35s ease, box-shadow .35s ease;
 }
-.fotografias img:hover{ transform: scale(1.05); }
+.fotografias img:hover{
+  transform: scale(1.07);
+  box-shadow:0 12px 24px rgba(0,0,0,.35);
+}
 
 /* Vídeo centralizado */
 .video{ display:flex; justify-content:center; margin-top:30px; }
+.video iframe{
+  width:100%;
+  max-width:900px;
+  aspect-ratio:16 / 9;
+  height:auto;
+  border:0;
+}
 
 /* Poesia */
 .poema{ text-align:center; margin-top:30px; font-style:italic; }
@@ -90,123 +115,22 @@ footer{
 .poema p:nth-child(3){ color:#8e44ad; }
 .poema p:nth-child(4){ color:#c0392b; }
 
-/* Tabelas (info.html) */
+/* ===== Tabelas (info.html) ===== */
 table{ border-collapse:collapse; width:100%; max-width:800px; margin:16px auto; }
 th, td{ border:1px solid #333; padding:10px; text-align:center; }
 th{ background:#f4f4f4; color:#2c3e50; }
 td{ color:#34495e; }
 ul{ width:100%; max-width:800px; margin:16px auto; list-style:square; }
+
 /* ===== Menu responsivo (sem JS) ===== */
-
-/* Barra superior com título + botão */
-.topbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:8px 12px;
-}
-
-/* Esconde o checkbox real */
-.navcheck{
-  position:absolute;
-  left:-9999px;
-}
-
-/* Botão "Menu" (hambúrguer) */
-.menu-toggle{
-  display:none;                /* só aparece no mobile */
-  align-items:center;
-  gap:.5rem;
-  padding:.5rem .8rem;
-  border-radius:8px;
-  background:rgba(255,255,255,.15);
-  cursor:pointer;
-  user-select:none;
-}
-.menu-toggle .bars{
-  width:22px; height:2px; background:#fff; position:relative; display:inline-block;
-}
-.menu-toggle .bars::before,
-.menu-toggle .bars::after{
-  content:""; position:absolute; left:0; right:0; height:2px; background:#fff;
-}
-.menu-toggle .bars::before{ top:-6px; }
-.menu-toggle .bars::after { top: 6px; }
-.menu-toggle .txt{ color:#fff; font-weight:700; letter-spacing:.02em; }
-
-/* Desktop (mantém o que já tinhas) */
-@media (min-width: 701px){
-  nav{
-    display:flex;
-  }
-}
-
-/* Mobile */
-@media (max-width:700px){
-
-  /* mostra o botão e empilha o header */
-  .menu-toggle{ display:inline-flex; }
-
-  /* nav colapsado por defeito: altura 0 com transição suave */
-  nav{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-    padding:0 12px;
-    max-height:0;             /* fechado */
-    overflow:hidden;
-    transition:max-height .35s ease;
-  }
-
-  /* quando o checkbox está marcado, expande o menu */
-  .navcheck:checked + nav{
-    max-height: 260px;        /* espaço suficiente para as ligações */
-    padding-top:10px;
-    padding-bottom:10px;
-  }
-
-  /* toques maiores no mobile */
-  nav a{
-    padding:12px 14px;
-  }
-}
-
-/* Preferência de acessibilidade: menos movimento */
-@media (prefers-reduced-motion: reduce){
-  nav{ transition:none; }
-}
-/* ===== Overrides topo + menu responsivo ===== */
-
-/* 0) Header sem padding/fundo – quem pinta é a .topbar */
-header{
-  background: transparent !important;
-  padding: 0 !important;
-}
-
-/* 1) Barra superior (título centrado + botão à direita) */
-.topbar{
-  background: var(--verde);
-  color: var(--branco);
-  display:flex;
-  align-items:center;
-  justify-content:center;      /* mantém o h1 centrado */
-  position:relative;
-  padding:12px 16px;
-}
-.topbar h1{ margin:0; }
-
-/* 2) Esconde totalmente o checkbox (continua acessível para :checked) */
 .navcheck{
   position:absolute;
   left:-9999px;
   opacity:0;
   pointer-events:none;
 }
-
-/* 3) Botão “Menu” (só mobile) */
 .menu-toggle{
-  display:none;                /* desktop esconde */
+  display:none;
   align-items:center;
   gap:.5rem;
   padding:.5rem .8rem;
@@ -214,8 +138,7 @@ header{
   background:rgba(255,255,255,.15);
   cursor:pointer;
   user-select:none;
-
-  position:absolute;           /* encosta à direita da topbar */
+  position:absolute;
   right:12px;
   top:50%;
   transform:translateY(-50%);
@@ -231,41 +154,83 @@ header{
 .menu-toggle .bars::after { top: 6px; }
 .menu-toggle .txt{ color:#fff; font-weight:700; letter-spacing:.02em; }
 
-/* 4) Garante que a imagem encosta (sem linhas entre elementos) */
-header img.hero{ display:block; }
-
-/* 5) Desktop mantém o teu nav em linha */
 @media (min-width:701px){
   .menu-toggle{ display:none; }
   nav{ display:flex; }
 }
-
-/* 6) Mobile: colapsa/expande com o checkbox */
 @media (max-width:700px){
-
   .menu-toggle{ display:inline-flex; }
-
   nav{
     display:flex;
     flex-direction:column;
     gap:8px;
     padding:0 12px;
-    max-height:0;              /* fechado */
+    max-height:0;
     overflow:hidden;
     transition:max-height .35s ease;
   }
-
-  /* IMPORTANTE: usa ~ porque a imagem está entre o input e o nav */
   .navcheck:checked ~ nav{
-    max-height:260px;          /* espaço p/ links */
+    max-height:260px;
     padding-top:10px;
     padding-bottom:10px;
   }
-
-  nav a{ padding:12px 14px; }  /* alvos maiores */
+  nav a{ padding:12px 14px; }
 }
-
-/* Acessibilidade: menos movimento se preferido */
 @media (prefers-reduced-motion: reduce){
   nav{ transition:none; }
+}
+
+/* ===== Multimédia extra ===== */
+section.sec-fotos, section.sec-video, section.sec-poema{
+  min-height:100vh;
+  padding:40px 20px;
+}
+.sec-fotos{ background:#f9f9f9; }
+.sec-video{ background:#eef7ff; }
+.sec-poema{ background:#fff8f2; }
+
+/* Hero imagem + frase responsiva */
+.heroimg{ position:relative; }
+.heroimg img{ width:100%; display:block; }
+.heroimg .frase{
+  position:absolute;
+  left:8%;
+  bottom:14%;
+  font-size:8vw;
+  line-height:1;
+  font-weight:800;
+  color:#fff;
+  text-shadow:0 4px 18px rgba(0,0,0,.55);
+}
+/* ===== Layout responsivo da página Localização ===== */
+.local-wrap{
+  display:flex;
+  flex-direction:column;      /* mobile: empilhado (texto em cima, mapa em baixo) */
+  gap:20px;
+}
+
+/* mapa fluido */
+.local-map iframe{
+  width:100%;
+  aspect-ratio: 16 / 9;       /* altura automática */
+  height:auto;
+  border:0;
+  border-radius:10px;
+  box-shadow:0 6px 16px rgba(0,0,0,.1);
+}
+
+/* desktop/tablet largo: lado a lado */
+@media (min-width: 900px){
+  .local-wrap{
+    flex-direction:row;        /* lado a lado */
+    align-items:stretch;
+  }
+  .local-text{
+    flex: 1 1 45%;
+    padding-right:16px;
+    display:flex; align-items:center;   /* verticalmente centrado */
+  }
+  .local-map{
+    flex: 1 1 55%;
+  }
 }

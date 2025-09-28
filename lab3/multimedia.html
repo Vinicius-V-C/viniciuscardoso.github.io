@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <header>
+<header>
   <div class="topbar">
     <h1>Niterói</h1>
     <label for="navcheck" class="menu-toggle">
@@ -22,60 +22,64 @@
   <nav>
     <a href="index.html">Home</a>
     <a href="local.html">Localização</a>
-    <a href="multimedia.html">Multimédia</a>
+    <a href="multimedia.html" aria-current="page">Multimédia</a>
     <a href="info.html">Informações</a>
   </nav>
 </header>
 
+<!-- Hero adicional com frase -->
+<section class="heroimg">
+  <img src="images/imagem1.jpg" alt="Vista emblemática de Niterói">
+  <h2 class="frase">Cidade Sorriso</h2>
+</section>
 
+<main>
+  <h2>Multimédia</h2>
+  <p>Nesta página encontra conteúdos multimédia de Niterói.</p>
 
-  <main>
-    <h2>Multimédia</h2>
-    <p>Nesta página encontra conteúdos multimédia de Niterói.</p>
+  <p>
+    <a href="#fotografias">Fotografias</a> |
+    <a href="#video">Vídeo</a> |
+    <a href="#poema">Poesia</a>
+  </p>
+  
+  <section class="sec-fotos">
+    <h3 id="fotografias">Fotografias</h3>
+    <div class="fotografias">
+      <img src="images/imagem1.jpg" alt="Vista panorâmica de Niterói" loading="lazy">
+      <img src="images/imagem2.jpg" alt="Praia de Itacoatiara" loading="lazy">
+      <img src="images/imagem3.jpg" alt="Teatro Popular de Niterói" loading="lazy">
+      <img src="images/imagem4.jpg" alt="Vista do Pão de Açúcar a partir de Niterói" loading="lazy">
+      <img src="images/imagem5.jpg" alt="Fortaleza de Santa Cruz" loading="lazy">
+      <img src="images/imagem6.jpg" alt="Praia de Icaraí" loading="lazy">
+      <img src="images/imagem7.jpg" alt="Museu de Arte Contemporânea (MAC)" loading="lazy">
+      <img src="images/imagem8.jpg" alt="Praia de Camboinhas" loading="lazy">
+    </div>
+  </section>
 
-    <p>
-      <a href="#fotografias">Fotografias</a> |
-      <a href="#video">Vídeo</a> |
-      <a href="#poema">Poesia</a>
-    </p>
-    
-    <section>
-      <h3 id="fotografias">Fotografias</h3>
-      <div class="fotografias">
-        <img src="images/imagem1.jpg" alt="Vista panorâmica de Niterói">
-        <img src="images/imagem2.jpg" alt="Praia de Itacoatiara">
-        <img src="images/imagem3.jpg" alt="Teatro Popular de Niterói">
-        <img src="images/imagem4.jpg" alt="Vista do Pão de Açúcar a partir de Niterói">
-        <img src="images/imagem5.jpg" alt="Fortaleza de Santa Cruz">
-        <img src="images/imagem6.jpg" alt="Praia de Icaraí">
-        <img src="images/imagem7.jpg" alt="Museu de Arte Contemporânea (MAC)">
-        <img src="images/imagem8.jpg" alt="Praia de Camboinhas">
-      </div>
-    </section>
+  <section class="sec-video">
+    <h3 id="video">Vídeo</h3>
+    <div class="video">
+      <iframe
+        src="https://www.youtube.com/embed/cMIzWFpCk3M"
+        title="Vídeo de Niterói"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        loading="lazy"></iframe>
+    </div>
+  </section>
 
-    <section>
-      <h3 id="video">Vídeo</h3>
-      <div class="video">
-        <iframe width="560" height="315"
-          src="https://www.youtube.com/embed/cMIzWFpCk3M"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
-      </div>
-    </section>
+  <section class="sec-poema">
+    <h3 id="poema">Poesia</h3>
+    <div class="poema">
+      <p>Niterói, cidade à beira-mar,</p>
+      <p>teus morros vigiam o céu a clarear.</p>
+      <p>Do MAC ao Forte, memórias a viver,</p>
+      <p>praias e sonhos que o sol vem trazer.</p>
+    </div>
+  </section>
+</main>
 
-    <section>
-      <h3 id="poema">Poesia</h3>
-      <div class="poema">
-        <p>Niterói, cidade à beira-mar,</p>
-        <p>teus morros vigiam o céu a clarear.</p>
-        <p>Do MAC ao Forte, memórias a viver,</p>
-        <p>praias e sonhos que o sol vem trazer.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer><p>DIW 2025</p></footer>
+<footer><p>DIW 2025</p></footer>
 </body>
 </html>
