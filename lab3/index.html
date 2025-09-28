@@ -4,18 +4,30 @@
   <meta charset="UTF-8">
   <title>Niterói</title>
   <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <header>
+<header>
+  <div class="topbar">
     <h1>Niterói</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="local.html">Localização</a>
-      <a href="multimedia.html">Multimédia</a>
-      <a href="info.html">Informação</a>
-    </nav>
-    <img class="hero" src="images/niteroi.jpg" alt="Vista geral de Niterói">
-  </header>
+    <label for="navcheck" class="menu-toggle">
+      <span class="bars"></span><span class="txt">Menu</span>
+    </label>
+  </div>
+
+  <img class="hero" src="images/niteroi.jpg" alt="Vista de Niterói">
+
+  <input type="checkbox" id="navcheck" class="navcheck" aria-label="Abrir menu">
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="local.html">Localização</a>
+    <a href="multimedia.html">Multimédia</a>
+    <a href="info.html">Informações</a>
+  </nav>
+</header>
+
+
 
   <main>
     <h2>Bem-vindo!</h2>

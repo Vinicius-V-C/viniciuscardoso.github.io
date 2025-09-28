@@ -96,3 +96,176 @@ th, td{ border:1px solid #333; padding:10px; text-align:center; }
 th{ background:#f4f4f4; color:#2c3e50; }
 td{ color:#34495e; }
 ul{ width:100%; max-width:800px; margin:16px auto; list-style:square; }
+/* ===== Menu responsivo (sem JS) ===== */
+
+/* Barra superior com título + botão */
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:8px 12px;
+}
+
+/* Esconde o checkbox real */
+.navcheck{
+  position:absolute;
+  left:-9999px;
+}
+
+/* Botão "Menu" (hambúrguer) */
+.menu-toggle{
+  display:none;                /* só aparece no mobile */
+  align-items:center;
+  gap:.5rem;
+  padding:.5rem .8rem;
+  border-radius:8px;
+  background:rgba(255,255,255,.15);
+  cursor:pointer;
+  user-select:none;
+}
+.menu-toggle .bars{
+  width:22px; height:2px; background:#fff; position:relative; display:inline-block;
+}
+.menu-toggle .bars::before,
+.menu-toggle .bars::after{
+  content:""; position:absolute; left:0; right:0; height:2px; background:#fff;
+}
+.menu-toggle .bars::before{ top:-6px; }
+.menu-toggle .bars::after { top: 6px; }
+.menu-toggle .txt{ color:#fff; font-weight:700; letter-spacing:.02em; }
+
+/* Desktop (mantém o que já tinhas) */
+@media (min-width: 701px){
+  nav{
+    display:flex;
+  }
+}
+
+/* Mobile */
+@media (max-width:700px){
+
+  /* mostra o botão e empilha o header */
+  .menu-toggle{ display:inline-flex; }
+
+  /* nav colapsado por defeito: altura 0 com transição suave */
+  nav{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    padding:0 12px;
+    max-height:0;             /* fechado */
+    overflow:hidden;
+    transition:max-height .35s ease;
+  }
+
+  /* quando o checkbox está marcado, expande o menu */
+  .navcheck:checked + nav{
+    max-height: 260px;        /* espaço suficiente para as ligações */
+    padding-top:10px;
+    padding-bottom:10px;
+  }
+
+  /* toques maiores no mobile */
+  nav a{
+    padding:12px 14px;
+  }
+}
+
+/* Preferência de acessibilidade: menos movimento */
+@media (prefers-reduced-motion: reduce){
+  nav{ transition:none; }
+}
+/* ===== Overrides topo + menu responsivo ===== */
+
+/* 0) Header sem padding/fundo – quem pinta é a .topbar */
+header{
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+/* 1) Barra superior (título centrado + botão à direita) */
+.topbar{
+  background: var(--verde);
+  color: var(--branco);
+  display:flex;
+  align-items:center;
+  justify-content:center;      /* mantém o h1 centrado */
+  position:relative;
+  padding:12px 16px;
+}
+.topbar h1{ margin:0; }
+
+/* 2) Esconde totalmente o checkbox (continua acessível para :checked) */
+.navcheck{
+  position:absolute;
+  left:-9999px;
+  opacity:0;
+  pointer-events:none;
+}
+
+/* 3) Botão “Menu” (só mobile) */
+.menu-toggle{
+  display:none;                /* desktop esconde */
+  align-items:center;
+  gap:.5rem;
+  padding:.5rem .8rem;
+  border-radius:8px;
+  background:rgba(255,255,255,.15);
+  cursor:pointer;
+  user-select:none;
+
+  position:absolute;           /* encosta à direita da topbar */
+  right:12px;
+  top:50%;
+  transform:translateY(-50%);
+}
+.menu-toggle .bars{
+  width:22px; height:2px; background:#fff; position:relative; display:inline-block;
+}
+.menu-toggle .bars::before,
+.menu-toggle .bars::after{
+  content:""; position:absolute; left:0; right:0; height:2px; background:#fff;
+}
+.menu-toggle .bars::before{ top:-6px; }
+.menu-toggle .bars::after { top: 6px; }
+.menu-toggle .txt{ color:#fff; font-weight:700; letter-spacing:.02em; }
+
+/* 4) Garante que a imagem encosta (sem linhas entre elementos) */
+header img.hero{ display:block; }
+
+/* 5) Desktop mantém o teu nav em linha */
+@media (min-width:701px){
+  .menu-toggle{ display:none; }
+  nav{ display:flex; }
+}
+
+/* 6) Mobile: colapsa/expande com o checkbox */
+@media (max-width:700px){
+
+  .menu-toggle{ display:inline-flex; }
+
+  nav{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    padding:0 12px;
+    max-height:0;              /* fechado */
+    overflow:hidden;
+    transition:max-height .35s ease;
+  }
+
+  /* IMPORTANTE: usa ~ porque a imagem está entre o input e o nav */
+  .navcheck:checked ~ nav{
+    max-height:260px;          /* espaço p/ links */
+    padding-top:10px;
+    padding-bottom:10px;
+  }
+
+  nav a{ padding:12px 14px; }  /* alvos maiores */
+}
+
+/* Acessibilidade: menos movimento se preferido */
+@media (prefers-reduced-motion: reduce){
+  nav{ transition:none; }
+}
