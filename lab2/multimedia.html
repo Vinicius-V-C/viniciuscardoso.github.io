@@ -3,27 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <title>Niterói</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .fotografias {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .fotografias img {
+      width: 300px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .fotografias img:hover {
+      transform: scale(1.05);
+    }
+
+    .video {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .poema {
+      text-align: center;
+      margin-top: 30px;
+      font-style: italic;
+    }
+
+    .poema p:nth-child(1) {
+      color: #2c3e50;
+      font-weight: bold;
+    }
+
+    .poema p:nth-child(2) {
+      color: #16a085;
+    }
+
+    .poema p:nth-child(3) {
+      color: #8e44ad;
+    }
+
+    .poema p:nth-child(4) {
+      color: #c0392b;
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>Niterói</h1>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="local.html">Localização</a>
-      <a href="multimedia.html">Multimédia</a>
+      <a href="index.html">Home</a> |
+      <a href="local.html">Localização</a> |
+      <a href="multimedia.html">Multimédia</a> |
       <a href="info.html">Informação</a>
     </nav>
   </header>
+
   <main>
-    <h2>Multimedia</h2>
-    <p>Nessa pagina encontra multimedias de Niterói.</p>
-    <h3>Fotografias</h3>
-    <img src="images/multimedia1.jpg"width="300">
-    <img src="images/multimedia2.jpg"width="300">
-    <img src="images/multimedia3.jpg"width="300">
-    <img src="images/niteroi.jpg"width="300">
-    <img src="images/Praias-de-Niteroi-quantas-praias.jpg"width="300">
+    <h2>Multimédia</h2>
+    <p>Nesta página encontra conteúdos multimédia de Niterói.</p>
+
+    <!-- Âncoras -->
+    <p>
+      <a href="#fotografias">Fotografias</a> |
+      <a href="#video">Vídeo</a> |
+      <a href="#poema">Poesia</a>
+    </p>
+    
+    <section>
+      <h3 id="fotografias">Fotografias</h3>
+      <div class="fotografias">
+        <img src="images/imagem1.jpg" alt="Vista panorâmica de Niterói">
+        <img src="images/imagem2.jpg" alt="Praia de Itacoatiara">
+        <img src="images/imagem3.jpg" alt="Teatro Popular de Niterói">
+        <img src="images/imagem4.jpg" alt="Vista do Pão de Açúcar a partir de Niterói">
+        <img src="images/imagem5.jpg" alt="Fortaleza de Santa Cruz">
+        <img src="images/imagem6.jpg" alt="Praia de Icaraí">
+        <img src="images/imagem7.jpg" alt="Museu de Arte Contemporânea (MAC)">
+        <img src="images/imagem8.jpg" alt="Praia de Camboinhas">
+      </div>
+    </section>
+
+    <section>
+      <h3 id="video">Vídeo</h3>
+      <div class="video">
+        <iframe width="560" height="315" 
+          src="https://www.youtube.com/embed/cMIzWFpCk3M" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+
+    <section>
+      <h3 id="poema">Poesia</h3>
+      <div class="poema">
+        <p>Niterói, cidade à beira-mar,</p>
+        <p>teus morros vigiam o céu a clarear.</p>
+        <p>Do MAC ao Forte, memórias a viver,</p>
+        <p>praias e sonhos que o sol vem trazer.</p>
+      </div>
+    </section>
   </main>
+
   <footer>
     <p>DIW 2025</p>
   </footer>
