@@ -19,57 +19,73 @@
 
   <input type="checkbox" id="navcheck" class="navcheck" aria-label="Abrir menu">
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="local.html">Localização</a>
-  <a href="multimedia.html">Multimédia</a>
-  <a href="info.html" aria-current="page">Informações</a>
-</nav>
-
-
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="local.html">Localização</a>
+    <a href="multimedia.html">Multimédia</a>
+    <a href="info.html" aria-current="page">Informações</a>
+  </nav>
 </header>
 
+<main>
+  <h2>Informações</h2>
 
+  <section class="info-grid">
+    <article class="card intro">
+      <h3>Sobre Niterói</h3>
+      <p>Niterói é uma cidade litorânea do estado do Rio de Janeiro, conhecida pelas suas praias, fortes históricos e pelo famoso Museu de Arte Contemporânea (MAC).</p>
+    </article>
 
-  <main>
-    <h2>Informações</h2>
-    <p>Niterói é uma cidade litorânea do estado do Rio de Janeiro, conhecida pelas suas praias, fortes históricos e pelo famoso Museu de Arte Contemporânea (MAC).</p>
+    <article class="card tabela">
+      <h3>Dados sobre a cidade</h3>
+      <table>
+        <tr>
+          <th rowspan="2">Demografia</th>
+          <td>População</td>
+          <td>~ 500.000 habitantes</td>
+        </tr>
+        <tr>
+          <td>Densidade Populacional</td>
+          <td>3.600 hab/km²</td>
+        </tr>
+        <tr>
+          <th rowspan="2">Geografia</th>
+          <td>Área</td>
+          <td>133,9 km²</td>
+        </tr>
+        <tr>
+          <td colspan="2">Localização: Região Metropolitana do Rio de Janeiro</td>
+        </tr>
+        <tr>
+          <th>Website</th>
+          <td colspan="2"><a href="https://www.niteroi.rj.gov.br" target="_blank">www.niteroi.rj.gov.br</a></td>
+        </tr>
+      </table>
+    </article>
 
-    <h3>Dados sobre a cidade</h3>
-    <table>
-      <tr>
-        <th rowspan="2">Demografia</th>
-        <td>População</td>
-        <td>~ 500.000 habitantes</td>
-      </tr>
-      <tr>
-        <td>Densidade Populacional</td>
-        <td>3.600 hab/km²</td>
-      </tr>
-      <tr>
-        <th rowspan="2">Geografia</th>
-        <td>Área</td>
-        <td>133,9 km²</td>
-      </tr>
-      <tr>
-        <td colspan="2">Localização: Região Metropolitana do Rio de Janeiro</td>
-      </tr>
-      <tr>
-        <th>Website</th>
-        <td colspan="2"><a href="https://www.niteroi.rj.gov.br" target="_blank">www.niteroi.rj.gov.br</a></td>
-      </tr>
-    </table>
+    <article class="card curios">
+      <h3>Curiosidades</h3>
+      <ul>
+        <li>É considerada “cidade sorriso”.</li>
+        <li>Mais de 30 praias, incluindo a famosa Itacoatiara.</li>
+        <li>O MAC foi projetado por Oscar Niemeyer.</li>
+        <li>Única cidade brasileira fundada por indígenas (Arariboia).</li>
+        <li>Foi capital do estado do Rio de Janeiro até 1975.</li>
+      </ul>
+    </article>
 
-    <h3>Curiosidades sobre Niterói</h3>
-    <ul>
-      <li>É considerada “cidade sorriso”.</li>
-      <li>Possui mais de 30 praias, incluindo a famosa Itacoatiara.</li>
-      <li>O Museu de Arte Contemporânea (MAC) foi projetado por Oscar Niemeyer.</li>
-      <li>Niterói é a única cidade do Brasil fundada por indígenas, liderados por Arariboia.</li>
-      <li>A cidade já foi capital do estado do Rio de Janeiro (até 1975).</li>
-    </ul>
-  </main>
+    <figure class="card">
+      <img src="images/imagem2.jpg" alt="Praia de Itacoatiara">
+    </figure>
+    <figure class="card">
+      <img src="images/imagem5.jpg" alt="Fortaleza de Santa Cruz">
+    </figure>
+    <figure class="card">
+      <img src="images/imagem7.jpg" alt="Museu de Arte Contemporânea (MAC)">
+    </figure>
+  </section>
+</main>
 
-  <footer><p>DIW 2025</p></footer>
+<footer><p>DIW 2025</p></footer>
 </body>
 </html>
