@@ -1,0 +1,98 @@
+/* Base */
+* { box-sizing: border-box; }
+:root{
+  --verde:#2e7d32;
+  --preto:#333;
+  --cinza:#f3f6f9;
+  --branco:#fff;
+}
+
+html, body { height: 100%; }
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height:1.6;
+  background-color: var(--cinza); /* Passo 4 */
+  color:#222;
+}
+
+/* Cabeçalho e navegação */
+header{
+  background: var(--verde);       /* Passo 5 (elemento verde) */
+  color: var(--branco);
+  text-align: center;
+  padding: 16px 0;                /* espaçamento interno */
+}
+header h1{ margin:0; }
+
+nav{
+  background: var(--preto);       /* Passo 5 (elemento preto) */
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  padding:10px 12px;              /* padding no nav */
+}
+nav a{
+  color:#fff;
+  text-decoration:none;
+  padding:6px 10px;
+  border-radius:6px;
+}
+nav a:hover{ background: rgba(255,255,255,.15); }
+
+/* Imagem obrigatória no topo de cada página */
+header img.hero{
+  width:100%;
+  max-height:260px;
+  object-fit:cover;
+  display:block;
+}
+
+/* Conteúdo principal */
+main{
+  max-width:1100px;
+  margin:24px auto;               /* margem externa (afasta do nav e do footer) */
+  background:#fff;
+  padding:18px 22px;              /* padding interno (respiro do conteúdo) */
+  border-radius:10px;
+  box-shadow:0 6px 20px rgba(0,0,0,.08);
+}
+
+/* Rodapé */
+footer{
+  background: var(--preto);
+  color:#fff;
+  text-align:center;
+  padding:12px 0;
+  margin-top:24px;                /* separa do main */
+}
+
+/* Multimédia – grelha de fotos */
+.fotografias{
+  display:flex; flex-wrap:wrap;
+  gap:15px; justify-content:center;
+}
+.fotografias img{
+  width:300px; height:auto;
+  border-radius:15px;
+  box-shadow:0 4px 10px rgba(0,0,0,.30);
+  transition: transform .3s ease;
+}
+.fotografias img:hover{ transform: scale(1.05); }
+
+/* Vídeo centralizado */
+.video{ display:flex; justify-content:center; margin-top:30px; }
+
+/* Poesia */
+.poema{ text-align:center; margin-top:30px; font-style:italic; }
+.poema p:nth-child(1){ color:#2c3e50; font-weight:bold; }
+.poema p:nth-child(2){ color:#16a085; }
+.poema p:nth-child(3){ color:#8e44ad; }
+.poema p:nth-child(4){ color:#c0392b; }
+
+/* Tabelas (info.html) */
+table{ border-collapse:collapse; width:100%; max-width:800px; margin:16px auto; }
+th, td{ border:1px solid #333; padding:10px; text-align:center; }
+th{ background:#f4f4f4; color:#2c3e50; }
+td{ color:#34495e; }
+ul{ width:100%; max-width:800px; margin:16px auto; list-style:square; }
