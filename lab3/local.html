@@ -3,19 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <title>Localização - Niterói</title>
-  <!-- Torna o layout responsivo em dispositivos móveis -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Ligação ao ficheiro de estilos externo -->
   <link rel="stylesheet" href="styles.css">
+  
 </head>
 <body>
-
-<!-- Cabeçalho da página com título, imagem e navegação -->
-<header>
+  <header>
   <div class="topbar">
     <h1>Niterói</h1>
 
-    <!-- Checkbox + label: mecanismo para abrir/fechar o menu em dispositivos móveis -->
+    <!-- Toggle do menu (acessível) -->
     <input type="checkbox" id="navcheck" class="navcheck" aria-label="Abrir menu de navegação">
     <label for="navcheck" class="menu-toggle" aria-hidden="true">
       <span class="bars"></span>
@@ -23,27 +20,24 @@
     </label>
   </div>
 
-  <!-- Imagem de destaque (hero) -->
+  <!-- mantém a tua imagem de topo -->
   <img class="hero" src="images/niteroi.jpg" alt="Vista de Niterói">
 
-  <!-- Navegação principal -->
-  <nav>
-    <a href="index.html">Home</a>
-    <!-- Página atual marcada com aria-current -->
-    <a href="local.html" aria-current="page">Localização</a>
-    <a href="multimedia.html">Multimédia</a>
-    <a href="info.html">Informações</a>
-  </nav>
+  <!-- navegação -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="local.html" aria-current="page">Localização</a>
+  <a href="multimedia.html">Multimédia</a>
+  <a href="info.html">Informações</a>
+</nav>
+
+
 </header>
 
-<!-- Conteúdo principal -->
 <main>
   <h2>Localização</h2>
 
-  <!-- Secção que agrupa texto descritivo e mapa -->
   <div class="local-wrap">
-
-    <!-- Texto com explicação sobre a localização -->
     <div class="local-text">
       <p>
         Niterói é uma cidade do sudeste do Brasil, no estado do Rio de Janeiro, na margem leste da
@@ -52,7 +46,16 @@
       </p>
     </div>
 
-    <!-- Mapa incorporado do Google Maps -->
     <div class="local-map">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117592.03648507496!2d-43.127707356783326!3d-22.92254813056431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9985c034c8b985%3A0x262ee793dfcc1775!2zTml0ZXLDs2ksIFJKLCBCcmFzaWw!5e0!3m2!1spt-PT!2spt!4v175870
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117592.03648507496!2d-43.127707356783326!3d-22.92254813056431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9985c034c8b985%3A0x262ee793dfcc1775!2zTml0ZXLDs2ksIFJKLCBCcmFzaWw!5e0!3m2!1spt-PT!2spt!4v1758707069810!5m2!1spt-PT!2spt"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</main>
+
+  <footer><p>DIW 2025</p></footer>
+</body>
+</html>
