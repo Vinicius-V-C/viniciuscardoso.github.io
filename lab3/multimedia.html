@@ -3,49 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <title>Niterói</title>
+  <!-- Ficheiro externo de estilos -->
   <link rel="stylesheet" href="styles.css">
+  <!-- Define largura da página igual à do dispositivo (responsividade) -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+
+<!-- Cabeçalho com barra superior, imagem hero e menu -->
 <header>
   <div class="topbar">
     <h1>Niterói</h1>
+    <!-- Botão/menu responsivo para dispositivos móveis -->
     <label for="navcheck" class="menu-toggle">
       <span class="bars"></span><span class="txt">Menu</span>
     </label>
   </div>
 
+  <!-- Imagem principal no cabeçalho -->
   <img class="hero" src="images/niteroi.jpg" alt="Vista de Niterói">
 
+  <!-- Checkbox que controla o menu -->
   <input type="checkbox" id="navcheck" class="navcheck" aria-label="Abrir menu">
 
+  <!-- Navegação principal -->
   <nav>
     <a href="index.html">Home</a>
     <a href="local.html">Localização</a>
+    <!-- Página atual está marcada com aria-current -->
     <a href="multimedia.html" aria-current="page">Multimédia</a>
     <a href="info.html">Informações</a>
   </nav>
 </header>
 
-<!-- Hero adicional com frase -->
+<!-- Secção hero adicional com imagem e frase -->
 <section class="heroimg">
   <img src="images/imagem1.jpg" alt="Vista emblemática de Niterói">
   <h2 class="frase">Cidade Sorriso</h2>
 </section>
 
+<!-- Conteúdo principal -->
 <main>
   <h2>Multimédia</h2>
   <p>Nesta página encontra conteúdos multimédia de Niterói.</p>
 
+  <!-- Links de navegação interna para cada secção -->
   <p>
     <a href="#fotografias">Fotografias</a> |
     <a href="#video">Vídeo</a> |
     <a href="#poema">Poesia</a>
   </p>
   
+  <!-- Secção de Fotografias -->
   <section class="sec-fotos">
     <h3 id="fotografias">Fotografias</h3>
     <div class="fotografias">
+      <!-- Galeria de imagens com loading="lazy" para otimizar desempenho -->
       <img src="images/imagem1.jpg" alt="Vista panorâmica de Niterói" loading="lazy">
       <img src="images/imagem2.jpg" alt="Praia de Itacoatiara" loading="lazy">
       <img src="images/imagem3.jpg" alt="Teatro Popular de Niterói" loading="lazy">
@@ -57,9 +70,11 @@
     </div>
   </section>
 
+  <!-- Secção de Vídeo -->
   <section class="sec-video">
     <h3 id="video">Vídeo</h3>
     <div class="video">
+      <!-- Vídeo incorporado do YouTube -->
       <iframe
         src="https://www.youtube.com/embed/cMIzWFpCk3M"
         title="Vídeo de Niterói"
@@ -69,6 +84,7 @@
     </div>
   </section>
 
+  <!-- Secção de Poesia -->
   <section class="sec-poema">
     <h3 id="poema">Poesia</h3>
     <div class="poema">
@@ -80,6 +96,10 @@
   </section>
 </main>
 
-<footer><p>DIW 2025</p></footer>
+<!-- Rodapé -->
+<footer>
+  <p>DIW 2025</p>
+</footer>
+
 </body>
 </html>

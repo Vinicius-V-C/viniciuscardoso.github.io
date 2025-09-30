@@ -3,38 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <title>Niterói</title>
+  <!-- Ligação ao ficheiro de estilos -->
   <link rel="stylesheet" href="styles.css">
+  <!-- Torna a página adaptável a dispositivos móveis -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+
+<!-- Cabeçalho com barra superior, imagem e menu -->
 <header>
   <div class="topbar">
     <h1>Niterói</h1>
+    <!-- Botão para abrir/fechar o menu em dispositivos móveis -->
     <label for="navcheck" class="menu-toggle">
       <span class="bars"></span><span class="txt">Menu</span>
     </label>
   </div>
 
+  <!-- Imagem principal de destaque (hero) -->
   <img class="hero" src="images/niteroi.jpg" alt="Vista de Niterói">
 
+  <!-- Checkbox usado no controlo do menu responsivo -->
   <input type="checkbox" id="navcheck" class="navcheck" aria-label="Abrir menu">
 
-<nav>
-  <a href="index.html" aria-current="page">Home</a>
-  <a href="local.html">Localização</a>
-  <a href="multimedia.html">Multimédia</a>
-  <a href="info.html">Informações</a>
-</nav>
-
+  <!-- Navegação principal do site -->
+  <nav>
+    <!-- Página atual marcada com aria-current -->
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="local.html">Localização</a>
+    <a href="multimedia.html">Multimédia</a>
+    <a href="info.html">Informações</a>
+  </nav>
 </header>
 
+<!-- Conteúdo principal da página -->
+<main>
+  <h2>Bem-vindo!</h2>
+  <p>Niterói é uma das cidades mais bonitas do Rio de Janeiro, famosa pelas suas praias, cultura e vista incrível para a Baía de Guanabara.</p>
+</main>
 
+<!-- Rodapé com créditos -->
+<footer>
+  <p>DIW 2025</p>
+</footer>
 
-  <main>
-    <h2>Bem-vindo!</h2>
-    <p>Niterói é uma das cidades mais bonitas do Rio de Janeiro, famosa pelas suas praias, cultura e vista incrível para a Baía de Guanabara.</p>
-  </main>
-
-  <footer><p>DIW 2025</p></footer>
 </body>
 </html>
