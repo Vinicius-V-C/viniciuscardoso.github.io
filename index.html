@@ -3,80 +3,114 @@
 <head>
   <meta charset="utf-8">
   <title>Vinícius Cardoso • Engenharia Informática</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Define largura da página igual à largura do dispositivo -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  
   <style>
-    /* Reset básico */
+    /* Suaviza a rolagem ao clicar em links do menu */
     html { scroll-behavior: smooth; }
+
+    /* Reset de margens e espaçamentos padrão */
     body, h1, h2, p, ul { margin:0; padding:0; }
+
+    /* Fonte principal e cor do texto */
     body { font-family: Arial, sans-serif; color:#111; }
 
-    /* MENU FIXO */
+    /* Barra de navegação fixa no topo */
     nav{
       position:fixed; top:0; left:0; right:0;
       background:#004d7a; z-index:1000;
     }
+
+    /* Lista de itens do menu em linha, centralizada */
     nav ul{
       list-style:none; display:flex; justify-content:center; gap:1.5rem;
       padding:1rem; margin:0;
     }
+
+    /* Links do menu em branco e a negrito */
     nav a{ color:#fff; text-decoration:none; font-weight:bold; }
+
+    /* Sublinhado ao passar o rato */
     nav a:hover{ text-decoration:underline; }
 
-    /* TODAS AS SECÇÕES ocupam a viewport */
+    /* Estrutura comum de todas as secções */
     section{
       min-height:100vh; display:flex; flex-direction:column;
       align-items:center; justify-content:center;
-      padding:90px 20px 30px; /* 90px para não ficar por baixo do menu fixo */
+      padding:90px 20px 30px; /* espaço para não ficar atrás do menu */
       box-sizing:border-box;
       text-align:center;
     }
 
-    /* HERO (sem foto, com gradiente) */
+    /* Secção inicial (hero) com gradiente */
     .hero{
       color:#fff;
       background: linear-gradient(135deg,#004d7a,#008793,#00bf72,#a8eb12);
     }
+
+    /* Título da secção hero com tamanho responsivo */
     .hero h1{ font-size:clamp(2rem,4vw,3rem); margin-bottom:.5rem; }
+
+    /* Texto da secção hero */
     .hero p{ font-size:1.1rem; margin-bottom:1.2rem; }
+
+    /* Botão destacado */
     .btn{
       display:inline-block; background:#ffd54f; color:#111;
       padding:.75rem 1.2rem; border-radius:8px; text-decoration:none;
       font-weight:700; box-shadow:0 6px 16px rgba(0,0,0,.25);
       transition:transform .2s ease;
     }
+
+    /* Animação de leve movimento no hover */
     .btn:hover{ transform: translateY(-3px); }
 
-    /* PROJETOS */
+    /* Fundo da secção Projetos */
     .projetos{ background:#fff3e0; }
+
+    /* Layout flexível para os cartões dos projetos */
     .cards{ display:flex; flex-wrap:wrap; gap:1rem; margin-top:1.2rem; justify-content:center; }
+
+    /* Aparência de cada cartão */
     .card{
       width:200px; background:#ffe0b2; border-radius:10px; padding:1rem;
       text-decoration:none; color:inherit; box-shadow:0 4px 12px rgba(0,0,0,.1);
       transition:transform .2s;
     }
+
+    /* Elevação do cartão ao passar o rato */
     .card:hover{ transform:translateY(-4px); }
 
-    /* DISCIPLINA */
+    /* Fundo da secção Disciplina */
     .cadeira{ background:#e8f5e9; }
+
+    /* Limite da largura do conteúdo da disciplina */
     .cadeira .conteudo{ max-width:900px; }
+
+    /* Espaçamento entre parágrafos */
     .cadeira p{ margin:10px auto 12px; }
+
+    /* Lista alinhada à esquerda e centrada */
     .cadeira ul{ margin-top:.5rem; text-align:left; display:inline-block; }
 
-    /* SECÇÃO FINAL (imagem diw) – não precisa 100vh */
+    /* Secção final com imagem ilustrativa */
     .fim{
       min-height:auto; padding:30px 20px; background:#fafafa;
     }
+
+    /* Estilo da imagem final */
     .fim img{
       width:300px; display:block; margin:0 auto; border:2px solid #666; border-radius:8px;
     }
 
-    /* FOOTER */
+    /* Rodapé escuro com texto centrado */
     footer{ background:#111; color:#fff; text-align:center; padding:1rem; }
   </style>
 </head>
 <body>
 
-  <!-- MENU -->
+  <!-- Menu fixo no topo da página -->
   <nav>
     <ul>
       <li><a href="#inicio">Início</a></li>
@@ -85,18 +119,19 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
+  <!-- Secção inicial (hero) com gradiente -->
   <section id="inicio" class="hero">
     <h1>Vinícius Cardoso</h1>
     <p>Estudante de Engenharia Informática 🚀</p>
     <a class="btn" href="#projetos">Ver projetos</a>
   </section>
 
-  <!-- PROJETOS -->
+  <!-- Secção dos projetos desenvolvidos -->
   <section id="projetos" class="projetos">
     <h2>Meus Projetos</h2>
     <p>Exercícios desenvolvidos na UC.</p>
     <div class="cards">
+      <!-- Cada card é um projeto com link -->
       <a class="card" href="lab1/index.html"><h3>Lab 1</h3><p>Estrutura base</p></a>
       <a class="card" href="lab2/index.html"><h3>Lab 2</h3><p>Layout responsivo</p></a>
       <a class="card" href="lab2/exercicios.html"><h3>Exercícios</h3><p>Prática guiada</p></a>
@@ -104,7 +139,7 @@
     </div>
   </section>
 
-  <!-- DISCIPLINA -->
+  <!-- Secção da disciplina com conteúdos estudados -->
   <section id="cadeira" class="cadeira">
     <div class="conteudo">
       <h2>Interfaces Web</h2>
@@ -120,11 +155,12 @@
     </div>
   </section>
 
-  <!-- IMAGEM NO FIM -->
+  <!-- Secção final com imagem ilustrativa -->
   <section class="fim">
     <img src="lab1/images/diw.svg" alt="Desenvolvimento de Interfaces Web (DIW)">
   </section>
 
+  <!-- Rodapé da página -->
   <footer>
     <p>Universidade Lusófona © 2025</p>
   </footer>
