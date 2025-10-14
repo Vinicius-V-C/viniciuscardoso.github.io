@@ -4,8 +4,22 @@ body{
     gap: 20px;
     background: blue;
 }
+
 body section{
     background: white;
     padding: 10px;
     border-radius: 10px;
+}
+
+/* Formulário da secção 6 */
+#formSaudacao {
+  display: inline-flex;     /* mantém os campos e o botão na mesma linha */
+  align-items: center;      /* alinha verticalmente */
+  gap: 6px;                 /* espaço entre os elementos */
+  margin-bottom: 10px;      /* afasta da borda azul */
+}
+
+#formSaudacao input {
+  padding: 4px;             /* espaço interno nos campos */
+  font-size: 14px;          /* tamanho do texto confortável */
 }
