@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const p = document.getElementById('passa');
   if (p) {
     p.addEventListener('mouseover', () => p.textContent = "1. Obrigado por passares!");
-    p.addEventListener('mouseout',  () => p.textContent = "1. Passa por aqui!");
+    p.addEventListener('mouseout', () => p.textContent = "1. Passa por aqui!");
   }
 
-  // 2. Pinta-me (botões com data-color)
+  // 2. Pinta-me 
   const pinta = document.getElementById('pinta');
   if (pinta) {
     document.querySelectorAll('button.color').forEach((button) => {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Select que muda o fundo (usa this)
+  // 4. Select que muda o fundo
   const selectCor = document.getElementById('selecionaCor');
   if (selectCor) {
     selectCor.addEventListener('change', function () {
@@ -36,27 +36,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5. Conta! (expõe a função para o onclick do HTML)
-  let contador = 0;
+  // 5. Conta! mantém valor com localStorage
+  let contador = Number(localStorage.getItem('contadorManual')) || 0;
+
+  const spanContador = document.getElementById('contador');
+  if (spanContador) spanContador.textContent = contador;
+
   window.contar = function () {
     contador++;
-    const span = document.getElementById('contador');
-    if (span) span.textContent = contador;
+    if (spanContador) spanContador.textContent = contador;
+    localStorage.setItem('contadorManual', contador);
   };
 
-  // 6. Saudação (se usares formulário)
+  // 6. Saudação
   const form = document.getElementById('formSaudacao');
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const nome = (document.getElementById('nome') || {}).value || '';
-      const idade = (document.getElementById('idade') || {}).value || '';
+      const nome = document.getElementById('nome')?.value || '';
+      const idade = document.getElementById('idade')?.value || '';
       const msg = document.getElementById('mensagem');
       if (msg) msg.textContent = `Olá, o ${nome} tem ${idade}!`;
     });
   }
 
-  // 7. Contador automático (1/segundo)
+  // 7. Contador automático
   const autoSpan = document.getElementById('autoContador');
   if (autoSpan) {
     let contadorAuto = 0;
