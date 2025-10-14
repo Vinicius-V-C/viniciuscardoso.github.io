@@ -10,23 +10,26 @@
     <section>
         <p id = "passa"> 1. Passa por aqui!</p>
     </section>
-    
+
     <section>
-        <p id = "pinta"> 2. Pinta-me!
-                <button onclick="pintar('red')">Red</button>
-                <button onclick="pintar('green')">Green</button>
-                <button onclick="pintar('blue')">Blue</button>
-            </p> 
+        <p id="pinta">2. Vasco vai ser campeão da Copa do Brasil 2025!
+            <button class="color" data-color="red">Red</button>
+            <button class="color" data-color="green">Green</button>
+            <button class="color" data-color="blue">Blue</button>
+            <button class="color" data-color="gold">Gold</button>
+        </p>
     </section>
+
 
     <section id = "escreve">
         <label for = "colorir"> 3. Experimenta escrever...</label>
         <input id="colorir" type="text">
     </section>
 
+
     <section id="escolheCor">
         <p>4. Escolha uma cor:
-            <select id="selecionaCor" onchange="mudarFundo()">
+            <select id="selecionaCor">
                 <option value="white">White</option>
                 <option value="red">Red</option>
                 <option value="blue">Blue</option>
@@ -38,20 +41,13 @@
         <p>5. <button onclick="contar()">Conta!</button> <span id="contador">0</span></p>
     </section>
 
-    <section id="saudacao">
-        <p>6.
-            <input type="text" id="nome" placeholder="Nome">
-            <input type="number" id="idade" placeholder="Idade">
-            <button type="button" onclick="mostrarMensagem()">Submit</button>
-        </p>
-        <p id="mensagem"></p>
-    </section>
 
     <section id="contadorAuto">
         <p>7. Automatic Counter: <span id="autoContador">0</span></p>
     </section>
 
 
-    <script src = "main.js"></script>
+    <script src="main.js"></script>
+
 </body>
 </html>
