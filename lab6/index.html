@@ -1,25 +1,45 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Loja</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
-        <h1>Loja</h1>
-        <nav>
-            <ul>
-                <li><a href="#produtos">Produtos</a></li>
-                <li><a href="#cesto">Cesto</a></li>
-            </ul>
-        </nav>
-    </header> 
-    
-    <main>
-        <section id="Produtos"></section>
-        <section id="Cesto"></section>
-    </main>
-    <footer></footer>
-    <script src="scripts/produtos.js"></script>
-  
+  <header>
+    <h1>Loja</h1>
+
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#cesto">Cesto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="produtos">
+      <h2>Produtos</h2>
+      <section id="grade-produtos" aria-live="polite" aria-busy="false"></section>
+    </section>
+
+    <section id="cesto">
+      <h2>Cesto</h2>
+      <section id="lista-cesto" aria-live="polite" aria-busy="false"></section>
+
+      <section id="total">
+        <h3>Total</h3>
+        <p><strong>€ <span id="valor-total">0,00</span></strong></p>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+  </footer>
+
+  <script src="scprodutos.js"></script>
+  <script src="scripts/main.js"></script>
+
 </body>
 </html>
