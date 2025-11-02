@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Loja</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Loja</h1>
+
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="#" id="btnProdutos">Produtos</a></li>
+        <li><a href="#" id="btnCesto">Cesto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Filtros -->
+    <section id="filtros" aria-labelledby="titulo-filtros">
+      <h2 id="titulo-filtros">Selecione os seus Produtos</h2>
+      <form id="form-filtros">
+        <label>
+          Filtrar
+          <select id="filtro-categoria" aria-label="Filtrar por categoria">
+            <option value="">Todas as categorias</option>
+          </select>
+        </label>
+
+        <label>
+          Ordenar
+          <select id="ordem-preco" aria-label="Ordenar por preço">
+            <option value="">Ordenar pelo preço</option>
+            <option value="asc">Preço Crescente</option>
+            <option value="desc">Preço Decrescente</option>
+          </select>
+        </label>
+
+        <label>
+          Procurar
+          <input id="pesquisa" type="search" placeholder="pesquise por produto" aria-label="Pesquisar por nome" />
+        </label>
+      </form>
+    </section>
+
+    <!-- Produtos -->
+    <section id="produtos" class="ativo" aria-labelledby="titulo-produtos">
+      <h2 id="titulo-produtos" class="sr-only">Lista de produtos</h2>
+      <section id="grade-produtos" aria-live="polite" aria-busy="false"></section>
+    </section>
+
+    <!-- Cesto -->
+    <section id="cesto" class="oculto" aria-labelledby="titulo-cesto">
+      <h2 id="titulo-cesto">Cesto</h2>
+
+      <section id="lista-cesto" aria-live="polite" aria-busy="false"></section>
+
+      <section id="total">
+        <h3>Total</h3>
+        <p><strong>€ <span id="valor-total">0,00</span></strong></p>
+      </section>
+
+      <section id="finalizar">
+        <h3>Finalizar compra</h3>
+
+        <form id="form-compra">
+          <label>
+            <input type="checkbox" id="estudante" />
+            És estudante do DEISI?
+          </label>
+
+          <label>
+            Cupão de desconto:
+            <input type="text" id="cupao" placeholder="ex.: DEISI10" />
+          </label>
+
+          <label>
+            Nome:
+            <input type="text" id="nome" placeholder="ex.: Maria Lisboa" />
+          </label>
+
+          <button type="submit">Comprar</button>
+        </form>
+
+        <section id="resposta-compra" aria-live="polite"></section>
+      </section>
+    </section>
+  </main>
+
+  <footer></footer>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>

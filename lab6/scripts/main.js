@@ -1,6 +1,4 @@
-/* ============================================================
-   Catálogo com altura fixa, overlay, botão "Adicionar" e cesto com "Remover"
-   ============================================================ */
+
 
 const gradeProdutos = document.getElementById('grade-produtos');
 const listaCesto    = document.getElementById('lista-cesto');
