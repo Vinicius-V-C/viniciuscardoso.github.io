@@ -242,3 +242,5 @@ const produtos = [
     }
   }
 ]
+
+console.log(produtos);

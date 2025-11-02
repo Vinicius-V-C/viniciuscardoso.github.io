@@ -9,7 +9,6 @@
 <body>
   <header>
     <h1>Loja</h1>
-
     <nav aria-label="Navegação principal">
       <ul>
         <li><a href="#produtos">Produtos</a></li>
@@ -27,19 +26,24 @@
     <section id="cesto">
       <h2>Cesto</h2>
       <section id="lista-cesto" aria-live="polite" aria-busy="false"></section>
-
       <section id="total">
         <h3>Total</h3>
-        <p><strong>€ <span id="valor-total">0,00</span></strong></p>
+        <p><strong>€ <span id="valor-total" aria-live="polite">0,00</span></strong></p>
       </section>
     </section>
   </main>
 
-  <footer>
-  </footer>
+  <footer></footer>
 
-  <script src="scprodutos.js"></script>
+  <!-- Modal de detalhes do produto (sem <div>, só elementos semânticos) -->
+  <dialog id="produto-modal" aria-label="Detalhes do produto">
+    <article id="produto-modal-content"></article>
+    <form method="dialog">
+      <button type="submit" aria-label="Fechar detalhes">Fechar</button>
+    </form>
+  </dialog>
+
+  <script src="scripts/produtos.js"></script>
   <script src="scripts/main.js"></script>
-
 </body>
 </html>

@@ -1,4 +1,4 @@
-/* Reset mínimo e tipografia */
+/* ===== Reset mínimo e tipografia ===== */
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {
@@ -8,55 +8,164 @@ body {
   background: #fafafa;
 }
 
-/* Cabeçalho e navegação */
+/* ===== Cabeçalho e navegação ===== */
 header {
   padding: 1rem clamp(1rem, 3vw, 2rem);
   background: #0b5ed7;
   color: #fff;
 }
 header h1 { margin: 0 0 .5rem 0; font-size: clamp(1.4rem, 2.5vw, 2rem); }
+
 nav ul {
   list-style: none;
   padding: 0; margin: 0;
   display: flex; gap: 1rem;
 }
-nav a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: 600;
-}
+nav a { text-decoration: none; color: #fff; font-weight: 600; }
 nav a:focus, nav a:hover { text-decoration: underline; }
 
-/* Layout principal: duas colunas responsivas */
+/* ===== Layout principal: produtos em cima, cesto no fim ===== */
 main {
   padding: clamp(1rem, 3vw, 2rem);
   display: grid;
-  grid-template-columns: 2fr 1fr; /* produtos | cesto */
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "produtos"
+    "cesto";
   gap: clamp(1rem, 3vw, 2rem);
 }
-@media (max-width: 900px) {
-  main { grid-template-columns: 1fr; }
-}
+#produtos { grid-area: produtos; }
+#cesto    { grid-area: cesto; }
 
-/* Secções */
+/* ===== Títulos ===== */
 section > h2 {
   margin: 0 0 .75rem 0;
   font-size: clamp(1.2rem, 2vw, 1.5rem);
 }
 
-/* Grade dos produtos: usa GRID para os artigos */
+/* ===== Grade dos produtos ===== */
 #grade-produtos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1rem;
   align-items: start;
 }
 
-/* Itens do cesto: usa FLEX em coluna */
+/* ===== Cartões com altura fixa e overlay ===== */
+#grade-produtos article {
+  --card-height: 520px;     /* <- ajusta a altura que quiseres */
+  position: relative;
+  height: var(--card-height);
+  display: grid;
+  grid-template-rows: auto 1fr auto;  /* título | imagem | resumo */
+  overflow: hidden;
+  cursor: pointer;
+}
+#grade-produtos h3 {
+  margin: 0 0 .5rem 0;
+  font-size: 1.05rem;
+}
+
+/* imagem */
+#grade-produtos figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 .5rem 0;
+}
+#grade-produtos img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* resumo visível (curto) */
+.resumo { opacity: .9; }
+.resumo .categoria { opacity: .8; }
+.resumo .preco     { margin-top: .25rem; font-weight: 700; }
+.resumo .rating    { margin-top: .15rem; opacity: .9; }
+
+/* ---------- overlay de detalhes ---------- */
+.detalhes {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,.98);
+  padding: 1rem;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto auto; /* título | desc | preço | rating | botão */
+  gap: .5rem;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity .22s ease, transform .22s ease, visibility .22s;
+}
+#grade-produtos article:hover .detalhes,
+#grade-produtos article:focus-within .detalhes,
+#grade-produtos article.aberto .detalhes {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.detalhes h3 { margin: 0; font-size: 1.05rem; }
+.detalhes .meta { opacity: .9; }
+.detalhes .descricao {
+  overflow: auto;          /* permite rolar texto longo */
+  padding-right: .25rem;
+  max-height: 100%;
+}
+.detalhes .preco { font-weight: 700; }
+
+/* botão no overlay */
+.detalhes button {
+  justify-self: start;
+  margin-top: .5rem;
+}
+
+/* ===== Botões (base) ===== */
+button {
+  cursor: pointer;
+  border: 0;
+  padding: .6rem .9rem;
+  border-radius: .6rem;
+  background: #0b5ed7;
+  color: #fff;
+  font-weight: 600;
+  transition: background .2s ease;
+}
+button:hover { background: #094bb0; }
+button:disabled { opacity: .6; cursor: not-allowed; }
+
+/* ===== Cesto ===== */
 #lista-cesto {
   display: flex;
   flex-direction: column;
   gap: .75rem;
+}
+#lista-cesto article {
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* miniatura | info | botão */
+  gap: .75rem;
+  align-items: center;
+}
+#lista-cesto figure {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#lista-cesto img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+/* Botão "Remover" com LARGURA UNIFORME */
+#lista-cesto button {
+  width: 160px;           /* <- todos do mesmo tamanho */
+  justify-self: end;      /* alinha à direita da linha do cesto */
+  text-align: center;
 }
 
 /* Total do cesto */
@@ -68,7 +177,7 @@ section > h2 {
   border-radius: .5rem;
 }
 
-/* Artigos (quando o JS os criar) */
+/* ===== Cartão base (produtos e cesto) ===== */
 article {
   border: 1px solid #e5e7eb;
   border-radius: .75rem;
@@ -76,22 +185,15 @@ article {
   background: #fff;
   box-shadow: 0 1px 2px rgba(0,0,0,.04);
 }
-article h3 { margin: 0 0 .5rem 0; font-size: 1.1rem; }
 article p { margin: 0; }
 
-/* Botões (opcional, para quando adicionar ao JS) */
-button {
-  cursor: pointer;
-  border: 0;
-  padding: .6rem .9rem;
-  border-radius: .6rem;
-  background: #0b5ed7;
-  color: #fff;
-  font-weight: 600;
+/* ===== Acessibilidade: foco visível ===== */
+:focus {
+  outline: 2px solid #ffbf00;
+  outline-offset: 2px;
 }
-button:disabled { opacity: .6; cursor: not-allowed; }
 
-/* Rodapé */
+/* ===== Rodapé ===== */
 footer {
   padding: 1rem clamp(1rem, 3vw, 2rem);
   background: #0f172a;
