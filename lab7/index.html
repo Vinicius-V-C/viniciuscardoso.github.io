@@ -1,28 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
+  <!-- Define a codificação de caracteres -->
   <meta charset="utf-8" />
+  <!-- Torna o site responsivo, ajustando ao ecrã do dispositivo -->
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
   <title>Loja</title>
+  <!-- Liga o ficheiro CSS externo com os estilos da página -->
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
+  <!-- Cabeçalho da página: contém o título e o menu de navegação -->
   <header>
+    
     <h1>Loja</h1>
 
+    <!-- Navegação principal do site, identificada por aria-label para acessibilidade -->
     <nav aria-label="Navegação principal">
       <ul>
+        <!-- Link para a secção de produtos -->
         <li><a href="#" id="btnProdutos">Produtos</a></li>
+        <!-- Link para a secção do cesto -->
         <li><a href="#" id="btnCesto">Cesto</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Conteúdo principal da página -->
   <main>
-    <!-- Filtros -->
+    <!-- Secção de filtros de pesquisa e ordenação -->
     <section id="filtros" aria-labelledby="titulo-filtros">
+      <!-- Título da secção -->
       <h2 id="titulo-filtros">Selecione os seus Produtos</h2>
+
+      <!-- Formulário para os filtros -->
       <form id="form-filtros">
+        <!-- Filtro por categoria -->
         <label>
           Filtrar
           <select id="filtro-categoria" aria-label="Filtrar por categoria">
@@ -30,6 +45,7 @@
           </select>
         </label>
 
+        <!-- Ordenação por preço -->
         <label>
           Ordenar
           <select id="ordem-preco" aria-label="Ordenar por preço">
@@ -39,59 +55,79 @@
           </select>
         </label>
 
+        <!-- Campo de pesquisa por nome -->
         <label>
           Procurar
-          <input id="pesquisa" type="search" placeholder="pesquise por produto" aria-label="Pesquisar por nome" />
+          <input 
+            id="pesquisa" 
+            type="search" 
+            placeholder="pesquise por produto" 
+            aria-label="Pesquisar por nome" 
+          />
         </label>
       </form>
     </section>
 
-    <!-- Produtos -->
+    <!-- Secção que mostra os produtos -->
     <section id="produtos" class="ativo" aria-labelledby="titulo-produtos">
+      <!-- Título oculto (para leitores de ecrã) -->
       <h2 id="titulo-produtos" class="sr-only">Lista de produtos</h2>
+
+      <!-- Área onde os produtos serão carregados dinamicamente via JavaScript -->
       <section id="grade-produtos" aria-live="polite" aria-busy="false"></section>
     </section>
 
-    <!-- Cesto -->
+    <!-- Secção do cesto de compras -->
     <section id="cesto" class="oculto" aria-labelledby="titulo-cesto">
       <h2 id="titulo-cesto">Cesto</h2>
 
+      <!-- Lista dos itens adicionados ao cesto -->
       <section id="lista-cesto" aria-live="polite" aria-busy="false"></section>
 
+      <!-- Secção que mostra o valor total do cesto -->
       <section id="total">
         <h3>Total</h3>
         <p><strong>€ <span id="valor-total">0,00</span></strong></p>
       </section>
 
+      <!-- Secção para finalizar a compra -->
       <section id="finalizar">
         <h3>Finalizar compra</h3>
 
+        <!-- Formulário de compra -->
         <form id="form-compra">
+          <!-- Checkbox para estudante -->
           <label>
             <input type="checkbox" id="estudante" />
             És estudante do DEISI?
           </label>
 
+          <!-- Campo para cupão de desconto -->
           <label>
             Cupão de desconto:
             <input type="text" id="cupao" placeholder="ex.: DEISI10" />
           </label>
 
+          <!-- Campo para o nome do comprador -->
           <label>
             Nome:
             <input type="text" id="nome" placeholder="ex.: Maria Lisboa" />
           </label>
 
+          <!-- Botão que envia o formulário -->
           <button type="submit">Comprar</button>
         </form>
 
+        <!-- Local onde aparece a resposta (mensagem de sucesso ou erro) -->
         <section id="resposta-compra" aria-live="polite"></section>
       </section>
     </section>
   </main>
 
+  <!-- Rodapé vazio (pode ser usado futuramente para informações adicionais) -->
   <footer></footer>
 
+  <!-- Importa o ficheiro JavaScript que contém toda a lógica do site -->
   <script src="scripts/main.js"></script>
 </body>
 </html>

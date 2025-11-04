@@ -1,44 +1,59 @@
-
+// Endereço base da loja na Internet
 const API_BASE = 'https://deisishop.pythonanywhere.com';
+
+// Caminhos usados para aceder aos dados dos produtos, categorias e para fazer compras
 const EP = {
-  products: `${API_BASE}/products`,
-  categories: `${API_BASE}/categories`,
-  buy: `${API_BASE}/buy`,
+  products: `${API_BASE}/products`,   // Endereço dos produtos
+  categories: `${API_BASE}/categories`, // Endereço das categorias
+  buy: `${API_BASE}/buy`,             // Endereço para finalizar a compra
 };
 
-/* ---- seletores ---- */
-const gradeProdutos   = document.getElementById('grade-produtos');
-const listaCesto      = document.getElementById('lista-cesto');
-const valorTotalEl    = document.getElementById('valor-total');
+/* ---- elementos do site ---- */
+// Estas linhas ligam o JavaScript aos elementos do HTML
+// Assim o código pode alterar o que aparece na página
 
-const filtroCategoria = document.getElementById('filtro-categoria');
-const ordemPreco      = document.getElementById('ordem-preco');
-const pesquisaInput   = document.getElementById('pesquisa');
+const gradeProdutos   = document.getElementById('grade-produtos'); // zona onde aparecem os produtos
+const listaCesto      = document.getElementById('lista-cesto');    // zona onde aparecem os produtos no cesto
+const valorTotalEl    = document.getElementById('valor-total');    // valor total do cesto
 
-const formCompra      = document.getElementById('form-compra');
-const chkEstudante    = document.getElementById('estudante');
-const inputCupao      = document.getElementById('cupao');
-const inputNome       = document.getElementById('nome');
-const respostaCompra  = document.getElementById('resposta-compra');
+// Campos do formulário de filtros
+const filtroCategoria = document.getElementById('filtro-categoria'); // menu para escolher a categoria
+const ordemPreco      = document.getElementById('ordem-preco');      // menu para ordenar pelo preço
+const pesquisaInput   = document.getElementById('pesquisa');         // campo de pesquisa
 
-const secProdutos     = document.getElementById('produtos');
-const secCesto        = document.getElementById('cesto');
+// Campos do formulário de compra
+const formCompra      = document.getElementById('form-compra');      // formulário de compra
+const chkEstudante    = document.getElementById('estudante');        // caixa para indicar se é estudante
+const inputCupao      = document.getElementById('cupao');            // campo do cupão de desconto
+const inputNome       = document.getElementById('nome');             // campo do nome do cliente
+const respostaCompra  = document.getElementById('resposta-compra');  // zona onde aparece o resultado da compra
 
+// Secções principais do site
+const secProdutos     = document.getElementById('produtos'); // secção dos produtos
+const secCesto        = document.getElementById('cesto');    // secção do cesto
+
+// Botões para mudar entre produtos e cesto
 const btnProdutos     = document.getElementById('btnProdutos');
 const btnCesto        = document.getElementById('btnCesto');
 
-/* ---- estado ---- */
-let todosProdutos = [];
-let viewProdutos  = [];
+/* ---- estado do site ---- */
+// Estas variáveis guardam informação temporária que o site usa
 
+let todosProdutos = []; // guarda todos os produtos vindos da Internet
+let viewProdutos  = []; // guarda os produtos filtrados para mostrar no ecrã
+
+// Nome usado para guardar o cesto dentro do navegador (localStorage)
 const SELECTED_KEY = 'produtos-selecionados';
 
-/* ---- utils ---- */
+/* ---- funções simples de apoio ---- */
+// Formata um número para o formato do euro (€)
 const fmtEUR = (n) =>
   new Intl.NumberFormat('pt-PT', { style: 'currency', currency: 'EUR' }).format(n);
 
+// Marca um elemento como "ocupado" enquanto carrega informação
 const setBusy = (el, busy) => el?.setAttribute('aria-busy', busy ? 'true' : 'false');
 
+// Vai buscar informação à Internet e devolve os dados prontos a usar
 async function fetchJSON(url, options) {
   const res = await fetch(url, options);
   if (!res.ok) {
@@ -48,24 +63,32 @@ async function fetchJSON(url, options) {
   return res.json();
 }
 
-/* ---- localStorage (cesto) ---- */
+/* ---- guardar e ler o cesto ---- */
+// Cria o espaço do cesto no navegador se ainda não existir
 function initSelecionados() {
   if (!localStorage.getItem(SELECTED_KEY)) {
     localStorage.setItem(SELECTED_KEY, JSON.stringify([]));
   }
 }
+
+// Lê os produtos guardados no cesto
 function lerSelecionados() {
   try { return JSON.parse(localStorage.getItem(SELECTED_KEY)) ?? []; }
   catch { localStorage.setItem(SELECTED_KEY, JSON.stringify([])); return []; }
 }
+
+// Guarda os produtos no cesto
 function guardarSelecionados(lista) {
   localStorage.setItem(SELECTED_KEY, JSON.stringify(lista));
 }
+
+// Atualiza o cesto se for alterado noutra aba do navegador
 window.addEventListener('storage', (ev) => {
   if (ev.key === SELECTED_KEY) atualizaCesto();
 });
 
-/* ---- helpers de UI ---- */
+/* ---- criação de pequenos textos de informação ---- */
+// Esta função ajuda a criar parágrafos com uma palavra em negrito e um valor
 function criarInfo(label, valor, className) {
   const p = document.createElement('p');
   if (className) p.className = className;
@@ -73,21 +96,23 @@ function criarInfo(label, valor, className) {
   return p;
 }
 
-/* ---- render de produtos ---- */
+/* ---- criação e apresentação dos produtos ---- */
+// Cria a estrutura visual de um produto e o botão para o adicionar ao cesto
 function criarProduto(p) {
-  const art = document.createElement('article');
-  art.tabIndex = 0;
+  const art = document.createElement('article'); // cria o cartão do produto
+  art.tabIndex = 0; // permite navegar com o teclado
 
   const h3 = document.createElement('h3');
-  h3.textContent = p.title;
+  h3.textContent = p.title; // nome do produto
 
   const figure = document.createElement('figure');
   const img = document.createElement('img');
-  img.src = p.image;
+  img.src = p.image; // imagem do produto
   img.alt = p.title;
-  img.loading = 'lazy';
+  img.loading = 'lazy'; // carrega a imagem apenas quando é visível
   figure.appendChild(img);
 
+  // Parte visível do produto
   const resumo = document.createElement('section');
   resumo.className = 'resumo';
   const catResumo = criarInfo('Categoria', p.category, 'categoria');
@@ -101,6 +126,7 @@ function criarProduto(p) {
   ratingResumo.innerHTML = `<strong>Rating:</strong> ${rate} ⭐ (${count} avaliações)`;
   resumo.append(catResumo, precoResumo, ratingResumo);
 
+  // Parte que aparece quando o produto é clicado
   const detalhes = document.createElement('section');
   detalhes.className = 'detalhes';
 
@@ -120,29 +146,30 @@ function criarProduto(p) {
   rating.className = 'rating';
   rating.innerHTML = `<strong>Rating:</strong> ${rate} ⭐ (${count} avaliações)`;
 
+  // Botão para adicionar o produto ao cesto
   const btnAdd = document.createElement('button');
   btnAdd.type = 'button';
   btnAdd.textContent = 'Adicionar ao cesto';
   btnAdd.setAttribute('aria-label', `Adicionar "${p.title}" ao cesto`);
   btnAdd.addEventListener('click', (ev) => {
-    ev.stopPropagation();
+    ev.stopPropagation(); // impede abrir os detalhes ao clicar
     const lista = lerSelecionados();
     lista.push({
       id: p.id, title: p.title, price: p.price, description: p.description,
       category: p.category, image: p.image, rating: p.rating
     });
-    guardarSelecionados(lista);
-    atualizaCesto();
+    guardarSelecionados(lista); // guarda o novo produto
+    atualizaCesto(); // mostra o cesto atualizado
   });
 
+  // Junta tudo no cartão do produto
   detalhes.append(t, meta, descricao, preco, rating, btnAdd);
-
   art.addEventListener('click', () => art.classList.toggle('aberto'));
-
   art.append(h3, figure, resumo, detalhes);
   return art;
 }
 
+// Mostra todos os produtos no ecrã
 function renderProdutos(lista) {
   setBusy(gradeProdutos, true);
   gradeProdutos.textContent = '';
@@ -150,7 +177,8 @@ function renderProdutos(lista) {
   setBusy(gradeProdutos, false);
 }
 
-/* ---- filtros / sort / search ---- */
+/* ---- filtros e pesquisa ---- */
+// Aplica as escolhas de categoria, preço e texto escrito na pesquisa
 function aplicarFiltros() {
   const cat = filtroCategoria.value.trim();
   const ord = ordemPreco.value;
@@ -167,10 +195,10 @@ function aplicarFiltros() {
   renderProdutos(viewProdutos);
 }
 
-/* ---- cesto ---- */
+/* ---- parte do cesto ---- */
+// Cria o aspeto de um produto dentro do cesto
 function criaProdutoCesto(produto) {
   const art = document.createElement('article');
-
   const h3 = document.createElement('h3'); h3.textContent = produto.title;
 
   const figure = document.createElement('figure');
@@ -181,6 +209,7 @@ function criaProdutoCesto(produto) {
   const categoria = criarInfo('Categoria', produto.category);
   const preco = document.createElement('p'); preco.textContent = fmtEUR(produto.price);
 
+  // Botão para remover um produto do cesto
   const btnRem = document.createElement('button');
   btnRem.type = 'button';
   btnRem.textContent = 'Remover';
@@ -199,6 +228,7 @@ function criaProdutoCesto(produto) {
   return art;
 }
 
+// Atualiza a lista e o total do cesto
 function atualizaCesto() {
   if (!listaCesto || !valorTotalEl) return;
 
@@ -220,9 +250,8 @@ function atualizaCesto() {
   setBusy(listaCesto, false);
 }
 
-/* ---- checkout: POST /buy ---- */
-/* API: products[], student(boolean), coupon(string), name(string) */
-/* Resposta: totalCost (string), reference (string), example (string), error (string) */
+/* ---- compra ---- */
+// Envia a compra para o servidor e mostra o resultado
 async function comprar(ev) {
   ev.preventDefault();
 
@@ -252,7 +281,6 @@ async function comprar(ev) {
       body: JSON.stringify(body)
     });
 
-    // totalCost vem como string "23,43" ou "23.43"
     const totalCostNumber = (() => {
       const raw = data.totalCost ?? data.total ?? data.toPay ?? '';
       const num = Number(String(raw).replace(',', '.'));
@@ -262,6 +290,7 @@ async function comprar(ev) {
     const ref = data.reference ?? '—';
     const msg = data.example || data.message || '';
 
+    // Mostra o resultado da compra
     respostaCompra.innerHTML = `
       <p><strong>Referência:</strong> ${ref}</p>
       <p><strong>Total a pagar:</strong> ${fmtEUR(totalCostNumber)}</p>
@@ -276,12 +305,15 @@ async function comprar(ev) {
   }
 }
 
-/* ---- tabs: Produtos | Cesto ---- */
+/* ---- alternar entre produtos e cesto ---- */
+// Mostra a parte dos produtos
 function mostrarProdutos() {
   secProdutos.classList.remove('oculto'); secProdutos.classList.add('ativo');
   secCesto.classList.add('oculto');       secCesto.classList.remove('ativo');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+// Mostra a parte do cesto
 function mostrarCesto() {
   secCesto.classList.remove('oculto');    secCesto.classList.add('ativo');
   secProdutos.classList.add('oculto');    secProdutos.classList.remove('ativo');
@@ -289,27 +321,28 @@ function mostrarCesto() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-/* ---- arranque ---- */
+/* ---- início do site ---- */
+// Esta função é chamada quando a página carrega
 async function boot() {
-  initSelecionados();
-  atualizaCesto();
+  initSelecionados();  // prepara o cesto
+  atualizaCesto();     // mostra o cesto
 
-  // tabs
+  // Liga os botões às funções
   btnProdutos.addEventListener('click', (e) => { e.preventDefault(); mostrarProdutos(); });
   btnCesto.addEventListener('click',    (e) => { e.preventDefault(); mostrarCesto(); });
 
-  // começa na vista Produtos
+  // Começa na secção de produtos
   mostrarProdutos();
 
-  // filtros
+  // Liga os filtros e a pesquisa
   filtroCategoria.addEventListener('change', aplicarFiltros);
   ordemPreco.addEventListener('change', aplicarFiltros);
   pesquisaInput.addEventListener('input',  aplicarFiltros);
 
-  // checkout
+  // Liga o botão de comprar
   formCompra.addEventListener('submit', comprar);
 
-  // fetch inicial
+  // Vai buscar os produtos e as categorias à Internet
   setBusy(gradeProdutos, true);
   try {
     const [prods, categorias] = await Promise.all([
@@ -319,6 +352,7 @@ async function boot() {
 
     todosProdutos = Array.isArray(prods) ? prods : [];
 
+    // Preenche o menu de categorias
     if (Array.isArray(categorias)) {
       for (const cat of categorias) {
         const opt = document.createElement('option');
@@ -328,6 +362,7 @@ async function boot() {
       }
     }
 
+    // Mostra os produtos no ecrã
     aplicarFiltros();
   } catch (e) {
     gradeProdutos.textContent = 'Não foi possível carregar os produtos da API.';
@@ -337,4 +372,5 @@ async function boot() {
   }
 }
 
+// Inicia tudo quando a página está pronta
 document.addEventListener('DOMContentLoaded', boot);

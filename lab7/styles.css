@@ -4,15 +4,15 @@ html, body { margin: 0; padding: 0; }
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   line-height: 1.5;
-  color: #111;
-  background: #fafafa;
+  color: black;
+  background: white;
 }
 
 /* ===== Cabeçalho e navegação ===== */
 header {
   padding: 1rem clamp(1rem, 3vw, 2rem);
-  background: #0b5ed7;
-  color: #fff;
+  background: blue;
+  color: white;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -24,7 +24,7 @@ nav ul {
   padding: 0; margin: 0;
   display: flex; gap: 1rem;
 }
-nav a { text-decoration: none; color: #fff; font-weight: 600; }
+nav a { text-decoration: none; color: white; font-weight: 600; }
 nav a:focus, nav a:hover { text-decoration: underline; }
 
 /* ===== Layout principal: filtros, produtos e cesto ===== */
@@ -65,7 +65,7 @@ section > h2 {
   flex-wrap: wrap;
   gap: .75rem 1rem;
   align-items: center;
-  background: #fff;
+  background: white;
   padding: .75rem 1rem;
   border-radius: .75rem;
   box-shadow: 0 1px 3px rgba(0,0,0,.1);
@@ -80,7 +80,7 @@ section > h2 {
 #filtros input[type="search"] {
   padding: .4rem .6rem;
   border-radius: .5rem;
-  border: 1px solid #ccc;
+  border: 1px solid white;
   font-size: .95rem;
 }
 
@@ -166,7 +166,7 @@ button {
   padding: .6rem .9rem;
   border-radius: .6rem;
   background: #0b5ed7;
-  color: #fff;
+  color: white;
   font-weight: 600;
   transition: background .2s ease;
 }
@@ -208,8 +208,8 @@ button:disabled { opacity: .6; cursor: not-allowed; }
 #total {
   margin-top: 1rem;
   padding: .75rem 1rem;
-  background: #eef4ff;
-  border: 1px solid #cfe2ff;
+  background: white;
+  border: 1px solid white;
   border-radius: .5rem;
 }
 
@@ -218,8 +218,8 @@ button:disabled { opacity: .6; cursor: not-allowed; }
   margin-top: 1.25rem;
   padding: 1rem;
   border-radius: .75rem;
-  background: #f9f9ff;
-  border: 1px solid #dbe4ff;
+  background: white;
+  border: 1px solid white;
 }
 #form-compra {
   display: flex;
@@ -230,23 +230,23 @@ button:disabled { opacity: .6; cursor: not-allowed; }
 }
 #form-compra input[type="text"] {
   padding: .4rem .6rem;
-  border: 1px solid #ccc;
+  border: 1px solid white;
   border-radius: .5rem;
 }
 
 /* ===== Cartões base ===== */
 article {
-  border: 1px solid #e5e7eb;
+  border: 1px solid white;
   border-radius: .75rem;
   padding: 1rem;
-  background: #fff;
+  background: white;
   box-shadow: 0 1px 2px rgba(0,0,0,.04);
 }
 article p { margin: 0; }
 
 /* ===== Acessibilidade ===== */
 :focus {
-  outline: 2px solid #ffbf00;
+  outline: 2px solid yellow;
   outline-offset: 2px;
 }
 
@@ -254,6 +254,6 @@ article p { margin: 0; }
 footer {
   padding: 1rem clamp(1rem, 3vw, 2rem);
   background: #0f172a;
-  color: #cbd5e1;
+  color: white;
   text-align: center;
 }
