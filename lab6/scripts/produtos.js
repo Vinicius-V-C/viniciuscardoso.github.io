@@ -244,3 +244,94 @@ const produtos = [
 ]
 
 console.log(produtos);
+
+
+/*
+===============================================================
+FICHEIRO: main.js
+Descrição geral:
+Este ficheiro controla todas as ações da loja — mostra produtos,
+permite filtrá-los, adicioná-los ao cesto e fazer a compra.
+Também guarda o cesto no navegador e comunica com a API online.
+===============================================================
+
+→ ELEMENTOS PRINCIPAIS DO CÓDIGO
+
+1. API_BASE e EP:
+   - Guardam os endereços usados para buscar produtos, categorias e enviar a compra.
+   (Exemplo: EP.products = "https://deisishop.pythonanywhere.com/products")
+
+2. document.getElementById():
+   - Liga o JavaScript aos elementos do HTML.
+   (Exemplo: document.getElementById('grade-produtos') liga o JS à área dos produtos.)
+
+3. Variáveis todosProdutos e viewProdutos:
+   - Guardam os produtos vindos da Internet e a lista filtrada que aparece no ecrã.
+
+4. localStorage:
+   - Guarda o cesto dentro do navegador, mesmo que a página seja fechada.
+   (Exemplo: localStorage.setItem('produtos-selecionados', JSON.stringify(lista)))
+
+5. Funções auxiliares:
+   - fmtEUR(): mostra valores com símbolo do euro (€).
+   - setBusy(): indica quando uma secção está a carregar.
+   - fetchJSON(): vai buscar dados à Internet e devolve em formato JSON.
+   (Exemplo: fetchJSON(EP.products) vai buscar a lista de produtos.)
+
+6. Funções do cesto:
+   - initSelecionados(): cria o cesto vazio se ainda não existir.
+   - lerSelecionados(): lê os produtos guardados no cesto.
+   - guardarSelecionados(): guarda os produtos no cesto.
+   - atualizaCesto(): atualiza o ecrã do cesto e o valor total.
+
+7. Função criarInfo(label, valor):
+   - Cria uma linha de texto com nome e valor (como “Categoria: Eletrónica”).
+
+8. Função criarProduto(p):
+   - Cria um cartão com imagem, preço e botão “Adicionar ao cesto”.
+   - Ao clicar, o produto é guardado no cesto com guardarSelecionados().
+
+9. Função renderProdutos(lista):
+   - Mostra todos os produtos no ecrã, um a um.
+
+10. Função aplicarFiltros():
+    - Filtra e ordena os produtos conforme o que o utilizador escolher:
+      • Categoria (Exemplo: “Eletrónica”)
+      • Ordem de preço (Exemplo: “Crescente”)
+      • Pesquisa por nome (Exemplo: “Relógio”)
+
+11. Função criaProdutoCesto(produto):
+    - Cria o cartão de cada produto dentro do cesto, com o botão “Remover”.
+
+12. Função comprar(ev):
+    - Envia os produtos do cesto para a API e mostra o resultado:
+      referência, total a pagar e mensagens de erro ou sucesso.
+
+13. Funções mostrarProdutos() e mostrarCesto():
+    - Alternam entre a vista dos produtos e a vista do cesto.
+    (Exemplo: quando se clica “Cesto”, esconde produtos e mostra o cesto.)
+
+14. Função boot():
+    - É chamada quando a página abre.
+    - Prepara tudo:
+        • Liga os botões.
+        • Carrega os produtos e categorias da API.
+        • Mostra os produtos no ecrã.
+        • Liga os filtros, a pesquisa e o formulário de compra.
+
+15. document.addEventListener('DOMContentLoaded', boot):
+    - Garante que o JavaScript só começa quando o HTML estiver completamente carregado.
+
+===============================================================
+RESUMO GERAL DO FUNCIONAMENTO:
+
+1. A página abre → boot() prepara tudo.
+2. Os produtos são carregados da Internet → aparecem no ecrã.
+3. O utilizador pode procurar, filtrar e ordenar produtos.
+4. Ao clicar em “Adicionar ao cesto”, o produto é guardado.
+5. O cesto mostra todos os produtos escolhidos e o total.
+6. Ao preencher o formulário e clicar “Comprar”, a compra é enviada para a API.
+7. O site mostra o resultado: valor total e referência da compra.
+
+===============================================================
+*/
